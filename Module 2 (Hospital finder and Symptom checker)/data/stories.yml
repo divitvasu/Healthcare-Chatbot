@@ -1,0 +1,1776 @@
+version: "2.0"
+
+stories:   
+ 
+ - story: Story location_1
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - action: utter_bot_intro
+   - intent: find_hospital
+     entities:
+     - place_of_interest: hospital
+     - location: Fremont
+   - slot_was_set:
+     - place_of_interest: hospital
+   - slot_was_set:
+     - location: Fremont
+   - action: action_hospital_location
+   - action: utter_did_that_help
+   - intent: goodbye
+   - action: utter_goodbye
+
+ - story: Story location_2
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - action: utter_bot_intro
+   - intent: find_hospital
+     entities:
+     - place_of_interest: hospital
+   - slot_was_set:
+     - place_of_interest: hospital
+   - action: utter_ask_location
+   - intent: find_hospital
+     entities:
+     - location: San Jose
+   - slot_was_set:
+     - location: San Jose
+   - action: action_hospital_location
+   - action: utter_did_that_help
+   - intent: goodbye
+   - action: utter_goodbye
+
+ - story: Story location_3
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - action: utter_bot_intro
+   - intent: find_hospital
+     entities:
+     - place_of_interest: hospital
+     - location: Milpitas
+   - slot_was_set:
+     - place_of_interest: hospital
+   - slot_was_set:
+     - location: Milpitas
+   - action: action_hospital_location
+   - action: utter_did_that_help
+   - intent: affirm
+   - action: utter_goodbye
+
+ - story: Story location_4
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - action: utter_bot_intro
+   - intent: find_hospital
+     entities:
+     - place_of_interest: hospital
+   - slot_was_set:
+     - place_of_interest: hospital
+   - action: utter_ask_location
+   - intent: find_hospital
+     entities:
+     - location: '94538'
+   - slot_was_set:
+     - location: '94538'
+   - action: action_hospital_location
+   - action: utter_address
+   - action: utter_did_that_help
+   - action: utter_goodbye
+   
+ - story: Story form_1
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - action: utter_bot_intro
+   - intent: check_symptoms
+   - action: gatheruserdata
+   - active_loop: gatheruserdata
+   - slot_was_set:
+     - requested_slot: gender
+   - intent: get_gender
+     entities:
+     - gender: female
+   - slot_was_set:
+     - gender: female
+   - action: gatheruserdata
+   - slot_was_set:
+     - requested_slot: age
+   - intent: get_age
+     entities:
+     - age: '35'
+   - slot_was_set:
+     - age: '35'
+   - action: gatheruserdata
+   - slot_was_set:
+     - requested_slot: symptom_initial
+   - intent: get_symptom
+   - action: gatheruserdata
+   - slot_was_set:
+     - requested_slot: symptom_initial
+   - intent: get_symptom
+   - action: action_deactivate_loop
+   - active_loop: null
+   - slot_was_set:
+     - requested_slot: null
+  
+  
+ - story: Story_Major
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - action: utter_bot_intro
+   - intent: check_symptoms
+   - action: gatheruserdata
+   - active_loop: gatheruserdata
+   - slot_was_set:
+     - requested_slot: gender
+   - slot_was_set:
+     - gender: female
+   - slot_was_set:
+     - gender: female
+   - slot_was_set:
+     - requested_slot: age
+   - slot_was_set:
+     - age: '21'
+   - slot_was_set:
+     - age: '21'
+   - slot_was_set:
+     - requested_slot: symptom_initial
+   - slot_was_set:
+     - symptom_initial: fever
+   - slot_was_set:
+     - requested_slot: null
+   - active_loop: null
+   - action: utter_submit
+   - action: utter_slots_values
+   - action: action_initial_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Between 98.6 and 100.4 °F or 37 and 38 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Between 100.4 and 104 °F or 38 and 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Greater than 104 °F or 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Temperature not checked\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_99
+       - s_100
+       - s_2000
+       - s_1820
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Provided direct care to such a person, without the use of a protective mask or gloves\n1. Yes\n2. No\n3. Don't know\n"
+       - "Direct physical contact with such a person\n1. Yes\n2. No\n3. Don't know\n"
+       - "Close contact with such a person within 1 m or 3 ft for longer than 15 minutes\n1. Yes\n2. No\n3. Don't know\n"
+       - "Other type of contact\n1. Yes\n2. No\n3. Don't know\n"
+       - "None of the above\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_2254
+       - p_300
+       - s_2256
+       - s_2257
+       - s_2258
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: c
+   - slot_was_set:
+     - choice: c
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Sense of smell is lost or diminished - scents around are less intense\n1. Yes\n2. No\n3. Don't know\n"
+       - "Sense of taste is lost or altered - food tastes differently than usual\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_1095
+       - s_1096
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Fatigue\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_2100
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Cough\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_102
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Less than 3 weeks\n1. Yes\n2. No\n3. Don't know\n"
+       - "Between 3 and 8 weeks\n1. Yes\n2. No\n3. Don't know\n"
+       - "More than 8 weeks\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_103
+       - s_1858
+       - s_106
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+        s_103: present
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+        s_103: present
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+        s_103: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+        s_103: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+        s_103: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_2254: present
+        s_1095: present
+        s_2100: present
+        s_102: present
+        s_103: present
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Dry cough, without phlegm or mucus\n1. Yes\n2. No\n3. Don't know\n"
+       - "Wet cough, with phlegm or mucus\n1. Yes\n2. No\n3. Don't know\n"
+       - "A dry and wet cough during the day, i.e., phlegm or mucus appearing occasionally\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_105
+       - s_104
+       - s_2268
+
+ - story: Story Major 2
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - action: utter_bot_intro
+   - intent: check_symptoms
+   - action: gatheruserdata
+   - active_loop: gatheruserdata
+   - slot_was_set:
+     - requested_slot: gender
+   - slot_was_set:
+     - gender: male
+   - slot_was_set:
+     - gender: male
+   - slot_was_set:
+     - requested_slot: age
+   - slot_was_set:
+     - age: '23'
+   - slot_was_set:
+     - age: '23'
+   - slot_was_set:
+     - requested_slot: symptom_initial
+   - slot_was_set:
+     - symptom_initial: I am having fever and backache
+   - slot_was_set:
+     - requested_slot: null
+   - active_loop: null
+   - action: utter_submit
+   - action: utter_slots_values
+   - action: action_initial_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_1190: present
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Between 98.6 and 100.4 °F or 37 and 38 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Between 100.4 and 104 °F or 38 and 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Greater than 104 °F or 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Temperature not checked\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_99
+       - s_100
+       - s_2000
+       - s_1820
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Between 98.6 and 100.4 °F or 37 and 38 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Between 100.4 and 104 °F or 38 and 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Greater than 104 °F or 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Temperature not checked\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_99
+       - s_100
+       - s_2000
+       - s_1820
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_1190: present
+        s_99: absent
+        s_100: present
+        s_2000: absent
+        s_1820: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Back pain, severe\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_1192
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_1190: present
+        s_99: absent
+        s_100: present
+        s_2000: absent
+        s_1820: present
+        s_1192: absent
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Provided direct care to such a person, without the use of a protective mask or gloves\n1. Yes\n2. No\n3. Don't know\n"
+       - "Direct physical contact with such a person\n1. Yes\n2. No\n3. Don't know\n"
+       - "Close contact with such a person within 1 m or 3 ft for longer than 15 minutes\n1. Yes\n2. No\n3. Don't know\n"
+       - "Other type of contact\n1. Yes\n2. No\n3. Don't know\n"
+       - "None of the above\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_2254
+       - p_300
+       - s_2256
+       - s_2257
+       - s_2258
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_1190: present
+        s_99: absent
+        s_100: present
+        s_2000: absent
+        s_1820: present
+        s_1192: absent
+        s_2254: absent
+        p_300: present
+        s_2256: absent
+        s_2257: present
+        s_2258: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Sense of smell is lost or diminished - scents around are less intense\n1. Yes\n2. No\n3. Don't know\n"
+       - "Sense of taste is lost or altered - food tastes differently than usual\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_1095
+       - s_1096
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_1190: present
+        s_99: absent
+        s_100: present
+        s_2000: absent
+        s_1820: present
+        s_1192: absent
+        s_2254: absent
+        p_300: present
+        s_2256: absent
+        s_2257: present
+        s_2258: present
+        s_1095: absent
+        s_1096: present
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Fatigue\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_2100
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_1190: present
+        s_99: absent
+        s_100: present
+        s_2000: absent
+        s_1820: present
+        s_1192: absent
+        s_2254: absent
+        p_300: present
+        s_2256: absent
+        s_2257: present
+        s_2258: present
+        s_1095: absent
+        s_1096: present
+        s_2100: absent
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+
+ - story: interactive_story_1
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - action: utter_bot_intro
+   - intent: check_symptoms
+   - action: gatheruserdata
+   - active_loop: gatheruserdata
+   - slot_was_set:
+     - requested_slot: gender
+   - slot_was_set:
+     - gender: male
+   - slot_was_set:
+     - gender: male
+   - slot_was_set:
+     - requested_slot: age
+   - slot_was_set:
+     - age: '21'
+   - slot_was_set:
+     - age: '21'
+   - slot_was_set:
+     - requested_slot: symptom_initial
+   - slot_was_set:
+     - symptom_initial: fever and bodyache
+   - slot_was_set:
+     - requested_slot: null
+   - active_loop: null
+   - action: utter_submit
+   - action: utter_slots_values
+   - action: action_initial_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Between 98.6 and 100.4 °F or 37 and 38 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Between 100.4 and 104 °F or 38 and 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Greater than 104 °F or 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Temperature not checked\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_99
+       - s_100
+       - s_2000
+       - s_1820
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Between 98.6 and 100.4 °F or 37 and 38 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Between 100.4 and 104 °F or 38 and 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Greater than 104 °F or 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Temperature not checked\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_99
+       - s_100
+       - s_2000
+       - s_1820
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_1820: present
+   - slot_was_set:
+     - flag: true
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_1820: present
+   - slot_was_set:
+     - flag: true
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_1820: present
+   - slot_was_set:
+     - flag: true
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_1820: present
+   - slot_was_set:
+     - flag: true
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Provided direct care to such a person, without the use of a protective mask or gloves\n1. Yes\n2. No\n3. Don't know\n"
+       - "Direct physical contact with such a person\n1. Yes\n2. No\n3. Don't know\n"
+       - "Close contact with such a person within 1 m or 3 ft for longer than 15 minutes\n1. Yes\n2. No\n3. Don't know\n"
+       - "Other type of contact\n1. Yes\n2. No\n3. Don't know\n"
+       - "None of the above\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_2254
+       - p_300
+       - s_2256
+       - s_2257
+       - s_2258
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_1820: present
+        s_2254: present
+        s_2257: present
+   - slot_was_set:
+     - flag: true
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_1820: present
+        s_2254: present
+        s_2257: present
+   - slot_was_set:
+     - flag: true
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_99: present
+        s_1820: present
+        s_2254: present
+        s_2257: present
+   - slot_was_set:
+     - flag: true
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_final_query
+   - action: utter_did_that_help
+   - intent: affirm
+   - action: utter_goodbye
+   - action: action_restart
+
+ - story: story sample
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - action: utter_bot_intro
+   - intent: check_symptoms
+   - action: gatheruserdata
+   - active_loop: gatheruserdata
+   - slot_was_set:
+     - requested_slot: gender
+   - slot_was_set:
+     - gender: male
+   - slot_was_set:
+     - gender: male
+   - slot_was_set:
+     - requested_slot: age
+   - slot_was_set:
+     - age: '21'
+   - slot_was_set:
+     - age: '21'
+   - slot_was_set:
+     - requested_slot: symptom_initial
+   - slot_was_set:
+     - symptom_initial: joint pain and fever
+   - slot_was_set:
+     - requested_slot: null
+   - active_loop: null
+   - action: utter_submit
+   - action: utter_slots_values
+   - action: action_initial_query
+   - slot_was_set:
+     - ids:
+        Initial: s_44
+        s_44: present
+        s_98: present
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Between 98.6 and 100.4 °F or 37 and 38 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Between 100.4 and 104 °F or 38 and 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Greater than 104 °F or 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Temperature not checked\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_99
+       - s_100
+       - s_2000
+       - s_1820
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: c
+   - slot_was_set:
+     - choice: c
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_44
+        s_44: present
+        s_98: present
+        s_99: absent
+        s_100: unknown
+        s_2000: absent
+        s_1820: present
+   - slot_was_set:
+     - flag: true
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Provided direct care to such a person, without the use of a protective mask or gloves\n1. Yes\n2. No\n3. Don't know\n"
+       - "Direct physical contact with such a person\n1. Yes\n2. No\n3. Don't know\n"
+       - "Close contact with such a person within 1 m or 3 ft for longer than 15 minutes\n1. Yes\n2. No\n3. Don't know\n"
+       - "Other type of contact\n1. Yes\n2. No\n3. Don't know\n"
+       - "None of the above\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_2254
+       - p_300
+       - s_2256
+       - s_2257
+       - s_2258
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_44
+        s_44: present
+        s_98: present
+        s_99: absent
+        s_100: unknown
+        s_2000: absent
+        s_1820: present
+        s_2256: absent
+        s_2257: absent
+        s_2258: absent
+   - slot_was_set:
+     - flag: true
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Provided direct care to such a person, without the use of a protective mask or gloves\n1. Yes\n2. No\n3. Don't know\n"
+       - "Direct physical contact with such a person\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_2254
+       - p_300
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_44
+        s_44: present
+        s_98: present
+        s_99: absent
+        s_100: unknown
+        s_2000: absent
+        s_1820: present
+        s_2256: absent
+        s_2257: absent
+        s_2258: absent
+        s_2254: absent
+        p_300: present
+   - slot_was_set:
+     - flag: true
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_44
+        s_44: present
+        s_98: present
+        s_99: absent
+        s_100: unknown
+        s_2000: absent
+        s_1820: present
+        s_2256: absent
+        s_2257: absent
+        s_2258: absent
+        s_2254: absent
+        p_300: absent
+   - slot_was_set:
+     - flag: true
+   - action: action_response_query
+   - action: action_storage_query
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_final_query
+   - action: utter_did_that_help
+   - intent: thankyou
+   - action: utter_goodbye
+   - action: action_restart
+
+ - story: interactive_story_1
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - action: utter_bot_intro
+   - intent: check_symptoms
+   - action: gatheruserdata
+   - active_loop: gatheruserdata
+   - slot_was_set:
+     - requested_slot: gender
+   - slot_was_set:
+     - gender: male
+   - slot_was_set:
+     - gender: male
+   - slot_was_set:
+     - requested_slot: age
+   - slot_was_set:
+     - age: '30'
+   - slot_was_set:
+     - age: '30'
+   - slot_was_set:
+     - requested_slot: symptom_initial
+   - slot_was_set:
+     - symptom_initial: fever and headache
+   - slot_was_set:
+     - requested_slot: null
+   - active_loop: null
+   - action: utter_submit
+   - action: utter_slots_values
+   - action: action_initial_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_21: present
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Between 98.6 and 100.4 °F or 37 and 38 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Between 100.4 and 104 °F or 38 and 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Greater than 104 °F or 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+       - "Temperature not checked\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_99
+       - s_100
+       - s_2000
+       - s_1820
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_21: present
+        s_99: absent
+        s_100: present
+   - slot_was_set:
+     - flag: true
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Mild\n1. Yes\n2. No\n3. Don't know\n"
+       - "Moderate\n1. Yes\n2. No\n3. Don't know\n"
+       - "Severe\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_1780
+       - s_1781
+       - s_1193
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_21: present
+        s_99: absent
+        s_100: present
+        s_1780: absent
+        s_1781: present
+   - slot_was_set:
+     - flag: true
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Provided direct care to such a person, without the use of a protective mask or gloves\n1. Yes\n2. No\n3. Don't know\n"
+       - "Direct physical contact with such a person\n1. Yes\n2. No\n3. Don't know\n"
+       - "Close contact with such a person within 1 m or 3 ft for longer than 15 minutes\n1. Yes\n2. No\n3. Don't know\n"
+       - "Other type of contact\n1. Yes\n2. No\n3. Don't know\n"
+       - "None of the above\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_2254
+       - p_300
+       - s_2256
+       - s_2257
+       - s_2258
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: b
+   - slot_was_set:
+     - choice: b
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: c
+   - slot_was_set:
+     - choice: c
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: c
+   - slot_was_set:
+     - choice: c
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: c
+   - slot_was_set:
+     - choice: c
+   - action: action_storage_query
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_21: present
+        s_99: absent
+        s_100: present
+        s_1780: absent
+        s_1781: present
+        s_2254: absent
+        p_300: unknown
+        s_2256: unknown
+        s_2257: unknown
+        s_2258: present
+   - slot_was_set:
+     - flag: true
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Sense of smell is lost or diminished - scents around are less intense\n1. Yes\n2. No\n3. Don't know\n"
+       - "Sense of taste is lost or altered - food tastes differently than usual\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_1095
+       - s_1096
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - action: action_response_query
+   - slot_was_set:
+     - choice: 'null'
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_21: present
+        s_99: absent
+        s_100: present
+        s_1780: absent
+        s_1781: present
+        s_2254: absent
+        p_300: unknown
+        s_2256: unknown
+        s_2257: unknown
+        s_2258: present
+        s_1095: present
+   - slot_was_set:
+     - flag: true
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_diagnosis_query
+   - slot_was_set:
+     - prompts:
+       - "Nasal congestion\n1. Yes\n2. No\n3. Don't know\n"
+   - slot_was_set:
+     - idkey:
+       - s_331
+   - action: action_response_query
+   - intent: get_choice
+     entities:
+     - choice: a
+   - slot_was_set:
+     - choice: a
+   - action: action_storage_query
+   - slot_was_set:
+     - ids:
+        Initial: s_98
+        s_98: present
+        s_21: present
+        s_99: absent
+        s_100: present
+        s_1780: absent
+        s_1781: present
+        s_2254: absent
+        p_300: unknown
+        s_2256: unknown
+        s_2257: unknown
+        s_2258: present
+        s_1095: present
+        s_331: present
+   - slot_was_set:
+     - flag: true
+   - action: action_reset_slots
+   - slot_was_set:
+     - choice: null
+   - slot_was_set:
+     - idkey: null
+   - slot_was_set:
+     - prompts: null
+   - slot_was_set:
+     - flag: false
+   - action: action_final_query
+   - action: utter_did_that_help
+   - intent: thankyou
+   - action: utter_goodbye

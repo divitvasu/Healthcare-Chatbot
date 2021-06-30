@@ -1,0 +1,148 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - thank you
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    
+- intent: request_details
+  examples: |
+    - view details
+    - i want to give you my name
+    - give name
+    - you need to know my name
+    - do you know my name?
+    - member 
+    - member id
+    - insurace number
+    - insurance 
+    - healthcare 
+    - view
+
+- intent: claim_information
+  examples: |
+    - claim
+    - claims
+    - need help with claims
+    - claim is approved
+    - claim is denied
+    - insurance claim
+    
+- intent: update_information
+  examples: |
+    - update information
+    - update details
+    - edit information
+    - edit
+    - update
+    - change 
+
+- intent: update_name
+  examples: |
+    - name
+    - Name
+    - update name
+    - edit name
+    - change name
+
+- intent: update_address
+  examples: |
+    - address
+    - addr
+    - update address
+    - change address
+    - edit address
+
+- intent: update_phone
+  examples: |
+    - phone
+    - update phone
+    - edit phone
+    - change phone

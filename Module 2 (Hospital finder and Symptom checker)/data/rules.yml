@@ -1,0 +1,121 @@
+version: "2.0"
+
+rules:
+
+- rule: Show functionalities
+  conversation_start: true
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_bot_intro
+  - action: action_listen
+
+- rule: Activate gatherdata for symptoms
+  steps:
+  - intent: check_symptoms
+  - action: gatheruserdata
+  - active_loop: gatheruserdata
+  
+- rule: Submit gatherdata for symptoms
+  condition:
+  - active_loop: gatheruserdata
+  steps:
+  - action: gatheruserdata
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_initial_query
+  wait_for_user_input: false
+
+ 
+#- rule: Run the following order after slot reset
+#  condition:
+#  - slot_was_set:
+#    - flag: true
+#  steps:
+#  - action: action_reset_slots
+#  - action: action_diagnosis_query
+#  - action: action_response_query
+#  - action: action_listen
+#  - action: action_storage_query
+#  wait_for_user_input: false
+
+
+    
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+  #wait_for_user_input: false
+# - rule: Say welcome when user says thank you
+  # steps:
+  # - intent: thankyou
+  # - action: utter_welcome
+  
+# - rule: Symptom checker
+  # steps:
+  # - action: action_initial_query
+  # - action: action_diagnosis_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_reset_slots 
+  # - action: action_diagnosis_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_reset_slots
+  # - action: action_diagnosis_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_reset_slots
+  # - action: action_diagnosis_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_reset_slots
+  # - action: action_diagnosis_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_response_query
+  # - action: action_storage_query
+  # - action: action_reset_slots
+  # - action: action_final_query
+  # wait_for_user_input: false

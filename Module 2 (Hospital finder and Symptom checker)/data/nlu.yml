@@ -1,0 +1,260 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hi
+    - Hello
+    - heelo
+- intent: goodbye
+  examples: |
+    - Bye
+    - Bye!
+    - Goodbye
+    - See you later
+    - Bye bot
+    - Goodbye friend
+    - bye
+    - bye for now
+    - catch you later
+    - gotta go
+    - See you
+    - goodnight
+    - have a nice day
+    - i'm off
+    - see you later alligator
+    - we'll speak soon
+    - goddbye
+    - goodbye
+    - have a good day
+    - have a wonderful day ahead
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - sure
+    - that does the job
+    - surely
+    - for sure
+    - cent percent
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - agree
+    - true
+    - nice job
+    - yes that helps!
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - no thanks
+    - no thank you
+    - uh no
+    - noope
+    - this didn't solve my query
+    - could you look it up again?
+    - do you have something else?
+    - no this does not work for me
+    - please show me some other results
+    - these do not suit my needs
+    - not meeting my requirements
+    - not upto the mark
+- intent: find_hospital
+  examples: |
+    - [hospital](place_of_interest)
+    - [pharmacy](place_of_interest)
+    - [Sunnyvale](location)
+    - [San Diego](location)
+    - [San Francisco](location)
+    - [California](location)
+    - [Bakersfield](location)
+    - [Sacramento](location)
+    - [Santa Barbara](location)
+    - [San Jose](location){"entity": "location", "value": "San Jose"}
+    - [Santa Monica](location)
+    - [Los Angeles](location)
+    - please find me a [hospital](place_of_interest)
+    - could you show me nearby [hospitals](place_of_interest)
+    - find me [hospitals](place_of_interest) near[Brentwood](location)
+    - [hospitals](place_of_interest) near[Milpitas](location)
+    - show me a [hospital](place_of_interest) nearest to [Fremont](location)
+    - i need a [hospital](place_of_interest)
+    - find me a nearby [hospital](place_of_interest)
+    - show me [hospitals](place_of_interest)
+    - find me a nearby [hospital](place_of_interest) my zip code is[95035](location)
+    - i need a [hospital](place_of_interest) my zip code is [95030](location)
+    - my zip code is [94538](location) and i need a [hospital](place_of_interest)
+    - i need a [hospital](place_of_interest) at [94513](location)
+    - i am in [Fresno](location) and i need a [hospital](place_of_interest)
+    - find me a nearby [hospital](place_of_interest) in [Monterey](location)
+    - hi i am in [Santa Cruz](location) i need a [hospital](place_of_interest)
+    - hello i am in [Merced](location) i need a [hospital](place_of_interest)
+    - Good morning i am in [Riverside](location) i need a [hospital](place_of_interest)
+    - Hello again i need a [hospital](place_of_interest) in [Stockton](location)
+    - Good morning i need a [hospital](place_of_interest) in [Oakland](location)
+    - Can you tell me a [hospital](place_of_interest) in [Pasedena](location)?
+    - Find me nearby [hospitals]{"entity": "place_of_interest", "value": "hospital"} to [Fremont](location)
+    - i need [hospitals]{"entity": "place_of_interest", "value": "hospital"}
+    - find me nearby [hospitals]{"entity": "place_of_interest", "value": "hospital"} to [Milpitas](location)
+    - show me [hospitals]{"entity": "place_of_interest", "value": "hospital"}
+    - [94538](location)
+    - [94513](location)
+    - [95035](location)
+    - find me a [pharmacy](place_of_interest) near [Antioch](location)
+- intent: check_symptoms
+  examples: |
+    - I want to perform a check on my symptoms
+    - please check my symptoms?
+    - wish to get my symptoms checked
+    - I am having some symptoms
+    - could you check my symptoms?
+    - please check my symptoms
+    - could u check my symptoms
+    - pls check me symptoms
+    - pls check my symptom
+    - I am not feeling well
+    - not feeling upto it
+    - feeling a bit off
+    - really unwell
+    - need some consultation on my symptoms
+    - i am having some health issues
+    - not well
+    - please advice me on my symptoms
+    - keeping unwell
+    - down on health
+    - feeling down
+    - am having some troubles
+    - some ailments
+    - I have a complaint
+    - I am ill
+    - experiencing illness
+    - sick today
+    - some sickness
+    - having an affliction
+    - check symptoms
+
+- intent: get_age
+  examples: |
+    - My age is [40](age)
+    - age is [25](age)
+    - Hey, my age is [20](age) years
+    - [55](age)
+    - [10](age)
+    - I am [81](age)
+    - am [12](age)
+    - [38](age)
+    - [92](age) old
+    - [22](age)
+    - I am [21](age) years
+    - [23](age) years
+    - [21](age)
+    - [30](age)
+- intent: get_gender
+  examples: |
+    - My gender is [male](gender)
+    - my sex is [female](gender)
+    - [male](gender)
+    - [female](gender)
+    - gender conforming [Female](gender)
+    - [male](gender) gender conforming
+    - I am a [Male](gender)
+    - I am a [female](gender)
+    - I am [male](gender)
+    - [male](gender)
+- intent: get_choice
+  examples: |
+    - [a](choice)
+    - [b](choice)
+    - [c](choice)
+    - [d](choice)
+    - [e](choice)
+    - [A](choice)
+    - [B](choice)
+    - [K](choice)
+    - [F](choice)
+    - [Z](choice)
+    - [b](choice)
+    - [a](choice)
+    - [c](choice)
+- intent: get_symptom
+  examples: |
+    - I have a headache and back pain
+    - leg pain and swelling
+    - stomachache and backache
+    - paining jaw and toothache
+    - cough sore throat and running nose
+    - palpitations and heart burn
+    - acidity and reflux
+    - cramps in abdomen
+    - diarrhoea and loose bowel
+    - watery eyes and ear pain
+    - bodyache and fever
+    - noose bleed
+    - I have a fever and a sore throat
+    - I have a fever
+    - fever and chills
+    - lumbar pain and cervical pain
+    - blurry vision
+    - feeling dizzy
+    - have nausea
+    - footache and ankle pain
+    - vomitting and stomach pain
+    - I have a headache and mild fever
+    - experiencing some joint pain
+    - fever
+    - I am having fever and backache
+    - fever and bodyache
+    - joint pain and fever
+    - fever and headache
+- intent: thankyou
+  examples: |
+    - Thanks
+    - Thank you
+    - Thank you so much
+    - Thanks bot
+    - Thanks for that
+    - cheers
+    - you made my day!
+    - can't thank you enough
+    - yes thanks
+    - thanks
+
+- synonym: hospital
+  examples: |
+    - hospitals
+    - hospital
+    - medical centre
+    - medicentre
+    - emergency room
+    - doctors
+    - doctor
+    - healthcare centre
+    - healthcare centres
+- synonym: pharmacy
+  examples: |
+    - pharmacies
+    - medical store
+    - chemist
+    - druggist
+    - medicines
+- regex: location
+  examples: |
+    - [0-9]{5}

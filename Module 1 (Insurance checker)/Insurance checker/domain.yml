@@ -1,0 +1,167 @@
+version: "2.0"
+
+actions:
+- action_hello_world
+- utter_greet
+- utter_cheer_up
+- utter_submit
+- utter_member_details
+- utter_claim_information
+- validate_input_details_form
+- validate_claim_form
+- action_update_details
+- validate_name_form
+- validate_address_form
+- validate_phone_form
+- utter_ask_update
+- utter_new_member_name
+- utter_new_address
+- utter_new_phone
+
+
+intents:
+  - request_details
+  - claim_information
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - update_information
+  - update_name
+  - update_address
+  - update_phone
+
+forms:
+    input_details_form:
+        member_id:
+            - type: from_text
+        member_name:
+            - type: from_text
+              not_intent: claim_information
+
+    claim_form:
+        member_id:
+            - type: from_text
+        claims:
+            - type: from_text
+            
+    name_form:
+        member_id:
+            - type: from_text
+        new_member_name:
+            - type: from_text
+    
+    address_form: 
+        member_id:
+            - type: from_text
+        new_address:
+            - type: from_text
+            
+    phone_form: 
+        member_id:
+            - type: from_text
+        new_phone:
+            - type: from_text
+
+slots:
+    member_id:
+        type: text    
+    member_name:
+        type: text
+    new_member_name:
+        type: text    
+    address:
+        type: text
+    new_address:
+        type: text
+    zip_code:
+        type: text
+    phone:
+        type: text
+    new_phone:
+        type: text
+    user_has_claims:
+        type: text
+    claims:
+        type: list
+    claim_status:
+        type: text
+    isMember:
+        type: bool
+    repeat_count:
+        type: float
+
+responses:
+    utter_ask_member_id:
+    - text: "Please enter your insurance member ID."
+    
+    utter_ask_member_name:
+    - text: "Please enter your insurance member name."
+    - text: "Please enter your first name as per goverment issued ID."
+    
+    utter_ask_new_member_name:
+    - text: "Please enter your new member name."
+    - text: "Please enter your new first name as per goverment issued ID."
+    
+    utter_ask_new_address:
+    - text: "Please enter your new address."
+    
+    utter_ask_new_phone:
+    - text: "Please enter your new phone number."
+    
+    utter_ask_claims:
+    - text: "Please Enter your claim number."
+    
+    utter_ask_continue:
+    - text: "Do you wish to continue?"
+    
+    utter_ask_address:
+    - text: "Please enter new address."
+    
+    utter_ask_update:
+    - text: "What information would you like to update:\n Name\n Address\n Phone"
+    
+    utter_ask_phone:
+    - text: "Please enter your updated phone number."
+    
+    utter_incorrect:
+    - text: "Please contact customer service of your insurance provider for more details."
+    
+    utter_did_that_help:
+    - text: "Did that help you?"
+    
+    utter_greet:
+    - text: "Hello! How can I help you?"
+    
+    utter_goodbye:
+    - text: "Bye"
+    - text: "Bye! Have a nice day!"
+
+    utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+       
+    utter_submit:
+    - text: "Thank you!"
+    - text: "Ok. Thanks!"
+    
+    utter_member_details:
+    - text: " Member id:{member_id}\nName:{member_name}\nAddress: {address}\nZipcode: {zip_code}\nPhone: {phone}."
+    
+    utter_new_member_name:
+    - text: " Member id:{member_id}\nName:{new_member_name}\nAddress: {address}\nZipcode: {zip_code}\nPhone: {phone}."
+    
+    utter_new_address:
+    - text: " Member id:{member_id}\nName:{member_name}\nAddress: {new_address}\nZipcode: {zip_code}\nPhone: {phone}."
+    
+    utter_new_phone:
+    - text: " Member id:{member_id}\nName:{member_name}\nAddress: {address}\nZipcode: {zip_code}\nPhone: {new_phone}."
+    
+    utter_claim_information:
+    - text: "Your claim number is {claims} and claim status is {claim_status}."
+    
+session_config:
+    session_expiration_time: 60
+    carry_over_slots_to_new_session: true

@@ -1,0 +1,36 @@
+version: "2.0"
+
+rules:
+
+#rule to activate the form
+#rule to deactivate the form
+##these two above rules are for every form
+# - rule: Activate form
+#   steps:
+#   - intent: request_details
+#   - action: input_details_form
+#   - active_loop: input_details_form
+
+# - rule: Submit form
+#   condition:
+#   - active_loop: input_details_form
+#   steps:
+#   - action: input_details_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_submit
+#   - action: utter_slots_values
+  
+rule:  
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+  
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

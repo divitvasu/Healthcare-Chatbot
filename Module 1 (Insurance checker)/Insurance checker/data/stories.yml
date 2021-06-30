@@ -1,0 +1,238 @@
+version: "2.0"
+
+stories:
+- story: story_1_DB
+  steps:
+  - intent: greet
+  - action: action_hello_world
+  - intent: request_details
+  - action: input_details_form
+  - active_loop: input_details_form
+  - slot_was_set:
+    - requested_slot: member_id
+  - slot_was_set:
+    - member_id: 1
+  - slot_was_set:
+    - requested_slot: member_name
+  - slot_was_set:
+    - member_name: abc
+  - slot_was_set:
+    - address: 355 suno street
+  - slot_was_set:
+      - zip_code: 95126
+  - slot_was_set:
+      - phone: 4087592634
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_member_details
+
+- story: story_2_DB
+  steps:
+  - intent: greet
+  - action: action_hello_world
+  - intent: claim_information
+  - action: claim_form
+  - active_loop: claim_form
+  - slot_was_set:
+    - requested_slot: member_id
+  - slot_was_set:
+    - member_id: 1
+  - slot_was_set:
+    - requested_slot: claims
+  - slot_was_set:
+    - claims: [123]
+  - slot_was_set:
+    - claim_status: Approved  
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+  
+- story: story_3_DB
+  steps:
+  - intent: greet
+  - action: action_hello_world
+  - intent: claim_information
+  - action: claim_form
+  - active_loop: claim_form
+  - slot_was_set:
+    - requested_slot: member_id
+  - slot_was_set:
+    - member_id: 1
+  - slot_was_set:
+    - user_has_claims: False    
+  - active_loop: null
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+  
+- story: story_4_DB
+  steps:
+  - intent: greet
+  - action: action_hello_world
+  - intent: claim_information
+  - action: claim_form
+  - active_loop: claim_form
+  - slot_was_set:
+    - requested_slot: member_id
+  - slot_was_set:
+    - member_id: 1
+  - slot_was_set:
+    - user_has_claims: False
+  - slot_was_set:
+    - requested_slot: claims
+  - slot_was_set:
+    - claims: null
+  - slot_was_set:
+    - claim_status: null  
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+  - action: action_restart  
+  
+- story: story_5_DB
+  steps:
+  - intent: greet
+  - action: action_hello_world
+  - intent: update_information
+  - action: utter_ask_update
+  - intent: update_name
+  - action: name_form
+  - active_loop: name_form
+  - slot_was_set:
+    - requested_slot: member_id
+  - slot_was_set:
+    - member_id: 1
+  - slot_was_set:
+    - requested_slot: new_member_name
+  - slot_was_set:
+    - new_member_name: pqr  
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_new_member_name
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+  
+- story: story_6_DB
+  steps:
+  - intent: greet
+  - action: action_hello_world
+  - intent: update_information
+  - action: utter_ask_update
+  - intent: update_name
+  - action: name_form
+  - slot_was_set:
+    - requested_slot: member_id
+  - slot_was_set:
+    - member_id: 1
+  - slot_was_set:
+    - new_member_name: null  
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: story_7_DB
+  steps:
+  - intent: greet
+  - action: action_hello_world
+  - intent: update_information
+  - action: utter_ask_update
+  - intent: update_address
+  - action: address_form
+  - active_loop: address_form
+  - slot_was_set:
+    - requested_slot: member_id
+  - slot_was_set:
+    - member_id: 1
+  - slot_was_set:
+    - requested_slot: new_address
+  - slot_was_set:
+    - new_address: 355 Sunol Street  
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_new_address
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+  
+- story: story_8_DB
+  steps:
+  - intent: greet
+  - action: action_hello_world
+  - intent: update_information
+  - action: utter_ask_update
+  - intent: update_address
+  - action: address_form
+  - active_loop: address_form
+  - slot_was_set:
+    - requested_slot: member_id
+  - slot_was_set:
+    - member_id: 1
+  - slot_was_set:
+    - new_address: null  
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+  
+- story: story_9_DB
+  steps:
+  - intent: greet
+  - action: action_hello_world
+  - intent: update_information
+  - action: utter_ask_update
+  - intent: update_phone
+  - action: phone_form
+  - active_loop: phone_form
+  - slot_was_set:
+    - requested_slot: member_id
+  - slot_was_set:
+    - member_id: 1
+  - slot_was_set:
+    - requested_slot: new_phone
+  - slot_was_set:
+    - new_phone: 6692512634  
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_new_phone
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+  
+- story: story_10_DB
+  steps:
+  - intent: greet
+  - action: action_hello_world
+  - intent: update_information
+  - action: utter_ask_update
+  - intent: update_phone
+  - action: phone_form
+  - active_loop: phone_form
+  - slot_was_set:
+    - requested_slot: member_id
+  - slot_was_set:
+    - member_id: 1
+  - slot_was_set:
+    - new_phone: null  
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye  
