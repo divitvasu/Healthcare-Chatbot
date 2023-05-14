@@ -1,4 +1,4 @@
-# Healthcare-Chatbot
+# Healthcare-Chatbot (2021)
 > Tools - RASA, Python, Twilio, WhatsApp, Ngrok, Infermedica and Google Maps API, SQLite
 
 Engineered a chatbot in RASA which interacts in natural language and gathers a set of symptoms from the user and using an API from Infermedica, provides a diagnosis, along with a list of relevant doctors sorted by ratings, nearby hospitals, and pharmacies, with an overall confidence of 92-95% in identifying the user intents and performing entity-recognition
