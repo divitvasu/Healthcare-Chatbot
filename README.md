@@ -1,12 +1,15 @@
 # Healthcare-Chatbot (2021)
+
 > Tools - RASA, Python, Twilio, WhatsApp, Ngrok, Infermedica and Google Maps API, SQLite
 
 Engineered a chatbot in RASA which interacts in natural language and gathers a set of symptoms from the user and using an API from Infermedica, provides a diagnosis, along with a list of relevant doctors sorted by ratings, nearby hospitals, and pharmacies, with an overall confidence of 92-95% in identifying the user intents and performing entity-recognition
 
 ## About
+
 This chatbot has been built from a demonstration point of view to exhibit the learnings imbibed from CS6120 Natural Language Processing, at Northeastern University. This bot has been developed to locate licensed hospitals, pharmacies for agiven area and return directions to the same on Google Maps. A framework of a symptom-checker has also been included in the project to aid in self-diagnosis. To achieve diagnostic results to symptoms provided by the user, calls were made to the APIs by a third-party provider. There is also a module in the project which lets a user view his insurance details, update the same or check the status of his claims. The chatbot assists by guiding patients/users to a set of possible underlying conditions. Users can converse with this bot through WhatsApp via Twilio as an intermediary.
 
 ## Architecture
+
 <p align="center">
 <img src="https://github.com/divitvasu/Healthcare-Chatbot/assets/30820920/8cb24a9c-626e-4246-bf24-68a7a8ff37e2" alt="Image" width="600" height="400">
 </p>
